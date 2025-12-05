@@ -63,4 +63,35 @@ struct InvoiceOptions {
     QString valid_period;
 };
 
+struct ConsignmentParty {
+    QString name;
+    QString inn;
+    QString kpp;
+    QString address;
+};
+
+struct ConsignmentItem {
+    QString name;
+    QString unit;
+    double quantity;
+    double price;
+    double grossWeight;
+    double netWeight;
+    double vatRate;
+};
+
+struct ConsignmentOptions {
+    QString invoiceNumber;
+    QString invoiceDate;
+    ConsignmentParty shipper;
+    ConsignmentParty consignee;
+    ConsignmentParty supplier;
+    QString basis;
+    QVector<ConsignmentItem> items;
+};
+
+QString numberToWords(double num);
+QString getPluralForm(int n, const QString &one, const QString &two, const QString &five);
+QString convertLessThanOneThousand(int n);
+
 #endif // DEFAULT_H
